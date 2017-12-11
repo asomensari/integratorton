@@ -14,6 +14,7 @@ Setup is extremelly simple.
 2. npm install
 
 3. Configure the default.json file under config folder with your account information and API keys
+```json 
 {
   "MasterAccount": {
     "accountId": "XXXXXX",
@@ -22,6 +23,7 @@ Setup is extremelly simple.
     "insightsQueryKey": "XXXXXXXX"
   }
 }
+```
 
 4. npm run start
 
