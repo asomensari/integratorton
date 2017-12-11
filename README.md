@@ -1,4 +1,4 @@
-# integratorton
+# Integrator-ton
 Integration Example to Show How to Render New Relic Insights data within third-party apps
 
 ## How Does It Work?
