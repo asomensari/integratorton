@@ -1,8 +1,9 @@
 {
   "name": "integratorton",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sample integration app to display New Relic Insights data on 3rd party apps",
   "main": "index.js",
+  "repository": "https://github.com/asomensari/integratorton",
   "dependencies": {
     "body-parser": "^1.18.2",
     "chartist-plugin-legend": "^0.6.2",
@@ -16,6 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Adilson Somensari",
+  
   "license": "ISC"
 }
