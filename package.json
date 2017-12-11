@@ -1,0 +1,21 @@
+{
+  "name": "integratorton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chartist-plugin-legend": "^0.6.2",
+    "express": "^4.16.2",
+    "node-chartist": "1.0.5",
+    "node-rest-client": "3.1.0",
+    "path": "^0.12.7",
+    "config": "^1.21.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

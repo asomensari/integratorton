@@ -1,0 +1,8 @@
+{
+  "MasterAccount": {
+    "accountId": "XXXXXX",
+    "restKey": "XXXXXXXX",
+    "adminKey": "XXXXXXXX",
+    "insightsQueryKey": "XXXXXXXX"
+  }
+}

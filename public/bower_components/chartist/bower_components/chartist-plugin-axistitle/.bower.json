@@ -1,0 +1,29 @@
+{
+  "name": "chartist-plugin-axistitle",
+  "version": "0.0.4",
+  "main": [
+    "./dist/chartist-plugin-axistitle.min.js"
+  ],
+  "dependencies": {
+    "chartist": "~0.10.1"
+  },
+  "ignore": [
+    ".*",
+    "Gruntfile.js",
+    "package.json",
+    "node_modules",
+    "src",
+    "test",
+    "tasks"
+  ],
+  "homepage": "https://github.com/alexstanbury/chartist-plugin-axistitle",
+  "_release": "0.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.4",
+    "commit": "ebdb80c2f713ac8a10cc8e0a8e4c12b12dc02d40"
+  },
+  "_source": "https://github.com/alexstanbury/chartist-plugin-axistitle.git",
+  "_target": "~0.0.1",
+  "_originalSource": "chartist-plugin-axistitle"
+}

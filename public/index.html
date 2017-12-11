@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>INTEGRATOR-TON</title>
+  <meta name="description" content="Sample Integration for UI Components and New Relic Insights">
+  <meta name="author" content="Adilson Somensari">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
+  <link rel="stylesheet" href="bower_components/chartist-plugin-legend/chartist-plugin-legend.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="bower_components/chartist/dist/chartist.min.js"></script>
+  <script src="bower_components/chartist-plugin-legend/chartist-plugin-legend.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $.getJSON("/getRawMetrics", function(jsonPayload){
+        console.log(jsonPayload.results[0]);
+        var events = jsonPayload.results[0].events;
+
+        var dataSeries1 = [];
+        var dataSeries2 = [];
+        var dataSeries3 = [];
+        for(var i=0;i<events.length;i++){
+          dataSeries1.push(events[i].duration);
+          dataSeries2.push(events[i].pageRenderingDuration);
+          dataSeries3.push(events[i].backendDuration);
+        }
+
+        Chartist.Line('.ct-chart', {
+          series: [{
+              name: ' Duration',
+              data: dataSeries1
+            },{
+              name: ' Page Rendering ',
+              data: dataSeries2
+            },{
+              name: ' Backend ',
+              data: dataSeries3
+            }]
+        }, {
+          width: '100%',
+          height: '300px'
+        });
+      });
+
+      $.getJSON("/getAvgMetrics", function(jsonPayload){
+        //console.log(jsonPayload.results[0]);
+        var timeseries = jsonPayload.timeSeries;
+
+        var dataSeries1 = [];
+        var dataSeries2 = [];
+        var dataSeries3 = [];
+        var dataSeries4 = [];
+
+        for(var i=0;i<timeseries.length;i++){
+          dataSeries1.push(timeseries[i].results[0].average);
+          dataSeries2.push(timeseries[i].results[1].average);
+          dataSeries3.push(timeseries[i].results[2].average);
+          dataSeries4.push(timeseries[i].results[3].average);
+        }
+
+        Chartist.Line('.ct2-chart', {
+          series: [
+            {
+              name: ' Duration',
+              data: dataSeries1
+            },{
+              name: ' DNS',
+              data: dataSeries2
+            },{
+              name: ' Dom ',
+              data: dataSeries3
+            },{
+              name: ' Backend ',
+              data: dataSeries4
+            }]
+          }, {
+            fullWidth: true,
+            chartPadding: {
+                right: 40
+            },
+            plugins: [
+              Chartist.plugins.legend({})
+            ],
+            width: '100%',
+            height: '300px'
+          });
+        });
+      });
+
+      Chartist.Line('.ct-chart', {
+        width: '70%',
+        height: '300px'
+      });
+
+      Chartist.Line('.ct-chart2', {
+        width: '70%',
+        height: '300px'
+      });
+  </script>
+  </head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="twelve column" style="margin-top: 1%">
+        <h2>IntegratorTon</h2>
+        <p>This little project is just a prototype to demonstrate easy ways to use New Relic data within 3rd party platforms or solutions.</p>
+        <p>The charts in this page were build using <a href="https://gionkunz.github.io/chartist-js/">Chartist</a> and the page calls an Node.js endpoint to fetch data. The Node.js sendpoint is just a "passthrough" service to avoid Cross-Origin problems</p>
+        <p>The Node.js endpoints call New Relic Insights and runs NRQL (New Relic Query Language) queries on our platform and returns the data</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve column" style="margin-top: 5%">
+        <h4>Sample Raw Metric Query</h4>
+        <p>This is an example o a query that returns raw data.</p>
+        <p><b>SELECT duration, pageRenderingDuration,backendDuration from PageView since 1 day ago limit 50</b></p>
+        <div class="ct-chart"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve column" style="margin-top: 5%">
+        <h4>Sample Average Query</h4>
+        <p>This is an example of a query that returns function data (average()) in a timeseries format
+        </p>
+        <p><b>SELECT average(duration), average(dnsLookupDuration), average(domProcessingDuration), average(backendDuration) from PageView timeseries since 1 hour ago</b></p>
+        <div class="ct2-chart"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
