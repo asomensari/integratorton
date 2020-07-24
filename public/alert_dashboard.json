@@ -1,0 +1,145 @@
+{
+  "dashboard": {
+    "id": 1293377,
+    "title": "Alert Status",
+    "description": "",
+    "icon": "line-chart",
+    "created_at": "2020-07-24T13:13:06Z",
+    "updated_at": "2020-07-24T13:13:06Z",
+    "visibility": "all",
+    "editable": "editable_by_all",
+    "ui_url": "https://insights.newrelic.com/accounts/892308/dashboards/1293377",
+    "api_url": "https://api.newrelic.com/v2/dashboards/1293377",
+    "owner_email": "asomensari@newrelic.com",
+    "metadata": {
+      "version": 1
+    },
+    "widgets": [
+      {
+        "visualization": "facet_bar_chart",
+        "layout": {
+          "width": 3,
+          "height": 6,
+          "row": 1,
+          "column": 1
+        },
+        "widget_id": 19716680,
+        "account_id": 892308,
+        "data": [
+          {
+            "nrql": "SELECT count(*) FROM Alert FACET policy_name SINCE 1 week ago"
+          }
+        ],
+        "presentation": {
+          "title": "Alerts By Policy",
+          "notes": null,
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "facet_bar_chart",
+        "layout": {
+          "width": 3,
+          "height": 6,
+          "row": 1,
+          "column": 4
+        },
+        "widget_id": 19716681,
+        "account_id": 892308,
+        "data": [
+          {
+            "nrql": "SELECT count(*) FROM Alert FACET condition_name  SINCE 1 week ago"
+          }
+        ],
+        "presentation": {
+          "title": "Alerts By Condition",
+          "notes": null,
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "facet_pie_chart",
+        "layout": {
+          "width": 3,
+          "height": 3,
+          "row": 1,
+          "column": 7
+        },
+        "widget_id": 19716682,
+        "account_id": 892308,
+        "data": [
+          {
+            "nrql": "SELECT count(*) FROM Alert facet current_state since 1 day ago"
+          }
+        ],
+        "presentation": {
+          "title": "Alert State",
+          "notes": null,
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "billboard_comparison",
+        "layout": {
+          "width": 2,
+          "height": 3,
+          "row": 1,
+          "column": 10
+        },
+        "widget_id": 19716683,
+        "account_id": 892308,
+        "data": [
+          {
+            "nrql": "SELECT count(*) FROM Alert SINCE 1 week ago compare with 1 week ago"
+          }
+        ],
+        "presentation": {
+          "title": "Alerts vs Previous Week",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "facet_pie_chart",
+        "layout": {
+          "width": 3,
+          "height": 3,
+          "row": 4,
+          "column": 7
+        },
+        "widget_id": 19716684,
+        "account_id": 892308,
+        "data": [
+          {
+            "nrql": "SELECT count(*) FROM Alert where current_state ='open' since 1 week ago facet severity "
+          }
+        ],
+        "presentation": {
+          "title": "Alert Severity",
+          "notes": null,
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "billboard_comparison",
+        "layout": {
+          "width": 2,
+          "height": 3,
+          "row": 4,
+          "column": 10
+        },
+        "widget_id": 19716685,
+        "account_id": 892308,
+        "data": [
+          {
+            "nrql": "SELECT uniqueCount(incident_url) as 'Incidents' from Alert since 1 week ago compare with 1 week ago"
+          }
+        ],
+        "presentation": {
+          "title": "Incidents vs Previous Week",
+          "notes": null
+        }
+      }
+    ],
+    "filter": null
+  }
+}
