@@ -1,0 +1,197 @@
+{
+  "dashboard": {
+    "title": "Git",
+    "description": null,
+    "icon": "bar-chart",
+    "visibility": "all",
+    "editable": "editable_by_all",
+    "metadata": {
+      "version": 1
+    },
+    "widgets": [
+      {
+        "visualization": "faceted_area_chart",
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 1,
+          "column": 1
+        },
+        "widget_id": 2239806,
+        "data": [
+          {
+            "nrql": "SELECT count(*) from GITEvent since 1 day ago timeseries facet repositoryFullName"
+          }
+        ],
+        "presentation": {
+          "title": "GIT Events By Repo",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "billboard",
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 1,
+          "column": 2
+        },
+        "widget_id": 2239439,
+        "data": [
+          {
+            "nrql": "SELECT count(*) from GITEvent since 1 day ago"
+          }
+        ],
+        "presentation": {
+          "title": "Total GIT Events",
+          "notes": null,
+          "threshold": {}
+        }
+      },
+      {
+        "visualization": "facet_bar_chart",
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 1,
+          "column": 3
+        },
+        "widget_id": 2239803,
+        "data": [
+          {
+            "nrql": "SELECT count(*) from GITEvent since 1 day ago facet repositoryOwnerName"
+          }
+        ],
+        "presentation": {
+          "title": "GIT Events by Repo Owner",
+          "notes": null,
+          "drilldown_dashboard_id": 325467
+        }
+      },
+      {
+        "visualization": "facet_pie_chart",
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 2,
+          "column": 1
+        },
+        "widget_id": 2239808,
+        "data": [
+          {
+            "nrql": "SELECT count(*) from GITEvent since 1 day ago facet repositoryFullName"
+          }
+        ],
+        "presentation": {
+          "title": "GIT Event Count by Repo",
+          "notes": null,
+          "drilldown_dashboard_id": 325467
+        }
+      },
+      {
+        "visualization": "facet_pie_chart",
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 2,
+          "column": 2
+        },
+        "widget_id": 2239999,
+        "data": [
+          {
+            "nrql": "SELECT count(*) from GITEvent since 1 day ago facet eventName"
+          }
+        ],
+        "presentation": {
+          "title": "GIT Events by Name",
+          "notes": null,
+          "drilldown_dashboard_id": 325467
+        }
+      },
+      {
+        "visualization": "facet_pie_chart",
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 2,
+          "column": 3
+        },
+        "widget_id": 2853664,
+        "data": [
+          {
+            "nrql": "SELECT count(*) from GITEvent since 1 day ago facet repositoryLanguage"
+          }
+        ],
+        "presentation": {
+          "title": "GIT Events by Repo Language",
+          "notes": null,
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "facet_pie_chart",
+        "layout": {
+          "width": 1,
+          "height": 1,
+          "row": 3,
+          "column": 1
+        },
+        "widget_id": 2884138,
+        "data": [
+          {
+            "nrql": "SELECT count(*) from GITEvent since 1 day ago facet action"
+          }
+        ],
+        "presentation": {
+          "title": "Git Events By Action",
+          "notes": null,
+          "drilldown_dashboard_id": null
+        }
+      },
+      {
+        "visualization": "line_chart",
+        "layout": {
+          "width": 2,
+          "height": 1,
+          "row": 3,
+          "column": 2
+        },
+        "widget_id": 2240012,
+        "data": [
+          {
+            "nrql": "SELECT average(commitAddedCount), average(commitRemovedCount), average(commitModifiedCount) from GITEvent since 1 day ago timeseries"
+          }
+        ],
+        "presentation": {
+          "title": "Change Count",
+          "notes": null
+        }
+      },
+      {
+        "visualization": "event_table",
+        "layout": {
+          "width": 3,
+          "height": 1,
+          "row": 4,
+          "column": 1
+        },
+        "widget_id": 2853666,
+        "data": [
+          {
+            "nrql": "SELECT * from GITEvent since 1 day ago"
+          }
+        ],
+        "presentation": {
+          "title": "Raw Data",
+          "notes": null
+        }
+      }
+    ],
+    "filter": {
+      "event_types": [
+        "GITEvent"
+      ],
+      "attributes": []
+    }
+  }
+}
